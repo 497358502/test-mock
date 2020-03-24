@@ -7,11 +7,28 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
 
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  created () {
+    this.getHomeData();
+    this.getHomeData1();
+  },
+  methods:{
+    getHomeData(){
+      axios.get("/api/index").then(res =>{
+        console.log(res.data)
+      })
+    },
+    getHomeData1(){
+      axios.get("/cart/getCartList").then(res =>{
+        console.log(res.data)
+      })
+    },
   }
 }
 </script>
